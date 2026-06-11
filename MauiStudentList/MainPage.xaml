@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mtf="clr-namespace:Mtf.Maui.Controls;assembly=Mtf.Maui.Controls"
+             x:Class="MauiStudentList.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="user_img.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a submarine number ten" />
+            <Editor>
+                
+            </Editor>
+
+            <HorizontalStackLayout>
+                <Label
+                    Text="Név:"
+                    Style="{StaticResource Label}"
+                    />
+
+                <Entry
+                    Style="{StaticResource Input}"
+                    x:Name="Name"
+                    />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    Text="Kor:"
+                    Style="{StaticResource Label}"
+                    />
+
+                <mtf:NumericUpDownWithLabel
+                    x:Name="Age"
+                    />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    Text="Város:"
+                    Style="{StaticResource Label}"
+                    />
+
+                <Entry
+                    Style="{StaticResource Input}"
+                    x:Name="City"
+                    >
+                    <Entry.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_City_Tapped" NumberOfTapsRequired="1"/>
+                    </Entry.GestureRecognizers>
+                </Entry>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    Text="Van jogosítványa:"
+                    Style="{StaticResource Label}"
+                >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <mtf:CheckBoxWithLabel
+                    x:Name="DriverLicenceCb"
+                    />
+            </HorizontalStackLayout>
+
+            <Button
+                x:Name="SaveBtn"
+                Text="Mentés" 
+                Clicked="SaveBtn_Clicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
