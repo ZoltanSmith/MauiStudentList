@@ -72,11 +72,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Pages\" />
+	  <MauiImage Include="Resources\Images\other\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\other\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+	  <Compile Update="Pages\StudentDetailsPage.xaml.cs">
+	    <DependentUpon>StudentDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\StudentListPage.xaml.cs">
+	    <DependentUpon>StudentListPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\StudentListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

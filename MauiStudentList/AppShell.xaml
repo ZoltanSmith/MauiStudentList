@@ -7,8 +7,8 @@
     Title="MauiStudentList">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Student App"
+        ContentTemplate="{DataTemplate local:StudentListPage}"
+        Route="StudentListPage" />
 
 </Shell>

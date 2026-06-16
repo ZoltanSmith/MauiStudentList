@@ -1,4 +1,5 @@
 ﻿using MauiStudentList.Model;
+using MauiStudentList.Services;
 using MauiStudentList.ViewModel;
 
 namespace MauiStudentList
@@ -7,6 +8,7 @@ namespace MauiStudentList
     {
         //Student student = new();
         StudentViewModel studentVm = new();
+        StudentService studentService = new();
 
         public MainPage()
         {
@@ -21,7 +23,9 @@ namespace MauiStudentList
             //var age = (int)Age.Value;
             //student.Kor = age;
             //student.Varos = City.Text;
+            studentService.SaveStudentToDatabase(studentVm);
             SaveBtn.Text = "Mentve";
+            
         }
         private void ModBtn_Clicked(object sender, EventArgs e)
         {
