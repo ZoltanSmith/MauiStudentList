@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mtf="clr-namespace:Mtf.Maui.Controls;assembly=Mtf.Maui.Controls"
+             xmlns:local="clr-namespace:MauiStudentList.ViewModel"
              x:Class="MauiStudentList.MainPage">
 
+    <ContentPage.BindingContext>
+        <local:StudentViewModel />
+    </ContentPage.BindingContext>
+    
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -25,7 +30,7 @@
 
                 <Entry
                     Style="{StaticResource Input}"
-                    x:Name="Name"
+                    Text="{Binding Name}"
                     />
             </HorizontalStackLayout>
 
@@ -36,7 +41,7 @@
                     />
 
                 <mtf:NumericUpDownWithLabel
-                    x:Name="Age"
+                    Value="{Binding Kor}"
                     />
             </HorizontalStackLayout>
 
@@ -47,8 +52,9 @@
                     />
 
                 <Entry
-                    Style="{StaticResource Input}"
                     x:Name="City"
+                    Style="{StaticResource Input}"
+                    Text="{Binding Varos}"
                     >
                     <Entry.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_City_Tapped" NumberOfTapsRequired="1"/>
@@ -74,6 +80,11 @@
                 x:Name="SaveBtn"
                 Text="Mentés" 
                 Clicked="SaveBtn_Clicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ModBtn"
+                Text="Módosítás" 
+                Clicked="ModBtn_Clicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
