@@ -1,9 +1,14 @@
+using MauiStudentList.ViewModel;
+
 namespace MauiStudentList;
 
 public partial class StudentListPage : ContentPage
 {
-	public StudentListPage()
+    StudentListViewModel vm = new();
+
+    public StudentListPage()
 	{
 		InitializeComponent();
+		BindingContext = vm;
 	}
 }
