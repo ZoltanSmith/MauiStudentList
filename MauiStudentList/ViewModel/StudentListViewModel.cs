@@ -28,7 +28,14 @@ namespace MauiStudentList.ViewModel
 
         private void LoadStudent()
         {
-            Snackbar.Make($"{SelectedStudent}").Show();
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                if (SelectedStudent != null)
+                {
+                    Snackbar.Make($"{SelectedStudent}").Show();
+                    Toast.Make($"{SelectedStudent}").Show();
+                }
+            });
         }
 
         public StudentListViewModel()
