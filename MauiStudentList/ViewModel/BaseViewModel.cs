@@ -15,7 +15,7 @@ namespace MauiStudentList.ViewModel
         protected void SetProperty<T>(ref T property, T value, [CallerMemberName] string propertyName = "")
         {
             property = value;
-            OnPropertyChanged();
+            OnPropertyChanged(propertyName);
         }
     }
 }

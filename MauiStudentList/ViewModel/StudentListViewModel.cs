@@ -34,8 +34,14 @@ namespace MauiStudentList.ViewModel
                 {
                     Snackbar.Make($"{SelectedStudent}").Show();
                     Toast.Make($"{SelectedStudent}").Show();
+                    await Shell.Current.GoToAsync(nameof(StudentDetailsPage), new Dictionary<string, object>
+                    {
+                        { "SelectedStudent", SelectedStudent.Name }, //paraméter lista
+                        { "masikParam", 1 }
+                    });
                 }
             });
+            //new MainPage().ShowPageAsync(); //vh így nézett ki WF-on
         }
 
         public StudentListViewModel()

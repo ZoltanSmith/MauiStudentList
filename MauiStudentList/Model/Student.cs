@@ -1,6 +1,6 @@
 ﻿namespace MauiStudentList.Model
 {
-    internal class Student
+    public class Student
     {
         internal string Name { get; set; }
         internal int Kor { get; set; }

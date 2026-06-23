@@ -1,6 +1,8 @@
-﻿namespace MauiStudentList.ViewModel
+﻿using System.Web;
+
+namespace MauiStudentList.ViewModel
 {
-    public class StudentViewModel : BaseViewModel
+    public class StudentViewModel : BaseViewModel, IQueryAttributable
     {
         private string name;
         private int kor;
@@ -19,5 +21,9 @@
             get => varos; set => SetProperty(ref varos, value);
         }
 
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            Name = HttpUtility.UrlDecode(query["SelectedStudent"].ToString());
+        }
     }
 }

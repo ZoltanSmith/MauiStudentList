@@ -2,13 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mtf="clr-namespace:Mtf.Maui.Controls;assembly=Mtf.Maui.Controls"
-             xmlns:local="clr-namespace:MauiStudentList.ViewModel"
-             x:Class="MauiStudentList.MainPage">
+             x:Class="MauiStudentList.StudentDetailsPage">
 
-    <ContentPage.BindingContext>
-        <local:StudentViewModel />
-    </ContentPage.BindingContext>
-    
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -30,7 +25,7 @@
 
                 <Entry
                     Style="{StaticResource Input}"
-                    Text="{Binding Name}"
+                    Text="{Binding Name, Mode=TwoWay}"
                     />
             </HorizontalStackLayout>
 

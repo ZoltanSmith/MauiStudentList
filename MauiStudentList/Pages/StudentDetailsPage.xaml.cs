@@ -1,19 +1,24 @@
-﻿using MauiStudentList.Model;
-using MauiStudentList.Services;
+﻿using MauiStudentList.Services;
 using MauiStudentList.ViewModel;
 
 namespace MauiStudentList
 {
-    public partial class MainPage : ContentPage
+    public partial class StudentDetailsPage : ContentPage, IQueryAttributable
     {
-        //Student student = new();
         StudentViewModel studentVm = new();
         StudentService studentService = new();
+        public string SelectedStudent { get; set; }
 
-        public MainPage()
+        public StudentDetailsPage()
         {
             InitializeComponent();
             BindingContext = studentVm; //itt kapcsolódik a ViewModel objektum a View-hoz
+        }
+
+        // ez lehet nem kell
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            studentVm.ApplyQueryAttributes(query);
         }
 
         private void SaveBtn_Clicked(object sender, EventArgs e)
