@@ -1,4 +1,8 @@
-﻿using System.Web;
+﻿using CommunityToolkit.Mvvm.Input;
+using MauiStudentList.Model;
+using MauiStudentList.Services;
+using System.Web;
+using System.Windows.Input;
 
 namespace MauiStudentList.ViewModel
 {
@@ -7,6 +11,8 @@ namespace MauiStudentList.ViewModel
         private string name;
         private int kor;
         private string varos;
+
+        StudentService studentService = new();
 
         public string Name
         {
@@ -24,6 +30,20 @@ namespace MauiStudentList.ViewModel
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             Name = HttpUtility.UrlDecode(query["SelectedStudent"].ToString());
+        }
+
+        private RelayCommand saveCommand;
+        public ICommand SaveCommand => saveCommand ??= new RelayCommand(Save);
+
+        private void Save()
+        {
+            //student.Name = Name.Text;
+            ////Int32.TryParse(Age.Text, out int age);
+            //var age = (int)Age.Value;
+            //student.Kor = age;
+            //student.Varos = City.Text;
+            studentService.SaveStudentToDatabase(this);
+          
         }
     }
 }

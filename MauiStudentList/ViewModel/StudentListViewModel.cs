@@ -46,10 +46,11 @@ namespace MauiStudentList.ViewModel
 
         public StudentListViewModel()
         {
+            var dbStudents = (App.Current).Students.ToList();
             Students = new();
-            Students.Add(new Student() { Name = "John Doe", Kor = 20, Varos = "New York" });
-            Students.Add(new Student() { Name = "Jane Smith", Kor = 22, Varos = "Los Angeles" });
-            Students.Add(new Student() { Name = "Alice Johnson", Kor = 19, Varos = "Chicago" });
+            //Students.Add(new Student() { Name = "John Doe", Kor = 20, Varos = "New York" });
+            //Students.Add(new Student() { Name = "Jane Smith", Kor = 22, Varos = "Los Angeles" });
+            //Students.Add(new Student() { Name = "Alice Johnson", Kor = 19, Varos = "Chicago" });
         }
     }
 }

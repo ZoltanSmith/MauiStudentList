@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using MauiStudentList.Data;
 using Microsoft.Extensions.Logging;
 
 namespace MauiStudentList
@@ -17,13 +18,19 @@ namespace MauiStudentList
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            
-
+            builder.Services.AddDbContext<AppDbContext>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+            var scope = app.Services.CreateScope();
+            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            db.Database.EnsureCreated();
+
+            Seeder.Seed(db);
+            
+            return app;
         }
     }
 }

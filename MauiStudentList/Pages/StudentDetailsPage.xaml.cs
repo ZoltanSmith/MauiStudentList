@@ -3,10 +3,10 @@ using MauiStudentList.ViewModel;
 
 namespace MauiStudentList
 {
-    public partial class StudentDetailsPage : ContentPage, IQueryAttributable
+    public partial class StudentDetailsPage : ContentPage//, IQueryAttributable
     {
         StudentViewModel studentVm = new();
-        StudentService studentService = new();
+        //StudentService studentService = new();
         public string SelectedStudent { get; set; }
 
         public StudentDetailsPage()
@@ -16,10 +16,10 @@ namespace MauiStudentList
         }
 
         // ez lehet nem kell
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
-        {
-            studentVm.ApplyQueryAttributes(query);
-        }
+        //public void ApplyQueryAttributes(IDictionary<string, object> query)
+        //{
+        //    studentVm.ApplyQueryAttributes(query);
+        //}
 
         private void SaveBtn_Clicked(object sender, EventArgs e)
         {
@@ -28,14 +28,14 @@ namespace MauiStudentList
             //var age = (int)Age.Value;
             //student.Kor = age;
             //student.Varos = City.Text;
-            studentService.SaveStudentToDatabase(studentVm);
+            //studentService.SaveStudentToDatabase(studentVm);
             SaveBtn.Text = "Mentve";
             
         }
         private void ModBtn_Clicked(object sender, EventArgs e)
         {
-            studentVm.Name = "teszt";
-            studentVm.Kor = 99;
+            //studentVm.Name = "teszt";
+            //studentVm.Kor = 99;
         }
 
         private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)

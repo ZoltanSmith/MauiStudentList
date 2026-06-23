@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MauiStudentList
 {
     public partial class App : Application
     {
+        public DbContext db;
         public App()
         {
             InitializeComponent();
