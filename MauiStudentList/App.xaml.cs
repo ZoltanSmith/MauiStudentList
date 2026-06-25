@@ -1,11 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using MauiStudentList.Data;
 
 namespace MauiStudentList
 {
     public partial class App : Application
     {
-        public DbContext db;
+        // 1. kis programokhoz megfelelő:
+        internal static AppDbContext db;
+
+        // 2. közepes és nagyobb programokhoz megfelelő:
+        internal static IServiceProvider? ServiceProvider { get; set; }
+
         public App()
         {
             InitializeComponent();

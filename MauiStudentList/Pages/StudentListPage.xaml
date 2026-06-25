@@ -4,9 +4,6 @@
              x:Class="MauiStudentList.StudentListPage"
              xmlns:local="clr-namespace:MauiStudentList.ViewModel"
              Title="Diákok">
-    <ContentPage.BindingContext>
-        <local:StudentListViewModel />
-    </ContentPage.BindingContext>
     
     <VerticalStackLayout>
         <CollectionView

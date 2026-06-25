@@ -4,9 +4,9 @@ namespace MauiStudentList;
 
 public partial class StudentListPage : ContentPage
 {
-    StudentListViewModel vm = new();
+    //StudentListViewModel vm = new();
 
-    public StudentListPage()
+    public StudentListPage(StudentListViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

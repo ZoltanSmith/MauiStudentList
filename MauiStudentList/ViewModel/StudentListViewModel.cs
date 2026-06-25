@@ -1,10 +1,11 @@
 ﻿using CommunityToolkit.Maui.Alerts;
+using MauiStudentList.Data;
 using MauiStudentList.Model;
 using System.Collections.ObjectModel;
 
 namespace MauiStudentList.ViewModel
 {
-    class StudentListViewModel : BaseViewModel
+    public class StudentListViewModel : BaseViewModel
     {
 
         private ObservableCollection<Student> students;
@@ -44,13 +45,36 @@ namespace MauiStudentList.ViewModel
             //new MainPage().ShowPageAsync(); //vh így nézett ki WF-on
         }
 
-        public StudentListViewModel()
+        //public StudentListViewModel()
+        //{
+        //    // 1.
+        //    var dbStudents = App.db.Students?.ToList();
+
+        //    // 2.
+        //    dbStudents = App.ServiceProvider?.GetRequiredService<AppDbContext>().Students?.ToList();
+        //    //2.2
+        //    dbStudents = App.ServiceProvider?.GetRequiredService<IRepo>().Students?.ToList();
+
+        //    //Students = new(dbStudents ?? []);
+        //    //Students.Add(new Student() { Name = "John Doe", Kor = 20, Varos = "New York" });
+        //    //Students.Add(new Student() { Name = "Jane Smith", Kor = 22, Varos = "Los Angeles" });
+        //    //Students.Add(new Student() { Name = "Alice Johnson", Kor = 19, Varos = "Chicago" });
+        //}
+        //public StudentListViewModel(AppDbContext db)
+        //{
+        //    // 3.
+        //    var dbStudents = db.Students?.ToList();
+        //    Students = new(dbStudents ?? []);
+        //}
+
+        // 4.
+        public StudentListViewModel(IRepo repo)
         {
-            var dbStudents = (App.Current).Students.ToList();
-            Students = new();
-            //Students.Add(new Student() { Name = "John Doe", Kor = 20, Varos = "New York" });
-            //Students.Add(new Student() { Name = "Jane Smith", Kor = 22, Varos = "Los Angeles" });
-            //Students.Add(new Student() { Name = "Alice Johnson", Kor = 19, Varos = "Chicago" });
+            repo.GetAllStudentsAsync().ContinueWith(task =>
+            {
+                var dbStudents = task.Result;
+                Students = new(dbStudents ?? []);
+            });
         }
     }
 }
